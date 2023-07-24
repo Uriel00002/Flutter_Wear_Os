@@ -22,8 +22,13 @@ class MyApp extends StatelessWidget {
           headlineSmall: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold),
-            bodyMedium: TextStyle(
+          bodyMedium: TextStyle(
               color : Color.fromARGB(255, 137, 186, 243),
+            ),
+            bodySmall: TextStyle(
+              color: Colors.red,
+              fontSize: 12,
+              fontWeight: FontWeight.bold
             ),
         ),
 

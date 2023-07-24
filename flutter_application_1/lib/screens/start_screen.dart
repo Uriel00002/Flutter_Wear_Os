@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/assets/interval_progress_bar.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({Key? key}) : super(key: key);
@@ -39,39 +40,62 @@ class _StartScreenState extends State<StartScreen> {
   }
 
   Widget _indicators() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        _percentage(),
-        _smallDivider(),
-        _hydratation(),
-      ],
+    return IntrinsicHeight(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          _percentage(),
+          const SizedBox(
+            width: 10,
+          ),
+          _smallDivider(),
+          const SizedBox(
+            width: 10,
+          ),
+          _hydratation(),
+        ],
+      ),
     );
   }
 
   Widget _percentage() {
     return Column(
       children: [
-        Stack(
-          children: [
-            const CircularProgressIndicator(
-              strokeWidth: 6,
-              value: 1.0,
-            ),
-            Text(
-              '0%',
-              style: Theme.of(context).textTheme.headlineSmall,
-            ),
-          ],
+        SizedBox(
+          height: 60,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              const SizedBox(
+                width: 45,
+                height: 45,
+                child: CircularProgressIndicator(
+                  strokeWidth: 6,
+                  value: 0.3,
+                  color: Color.fromARGB(255, 74, 236, 62),
+                  backgroundColor: Color.fromARGB(255, 47, 9, 69),
+                ),
+              ),
+              Text(
+                '45%',
+                style: Theme.of(context).textTheme.bodySmall,
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
         ),
+        Text(
+          'Hoy',
+          style: Theme.of(context).textTheme.bodySmall,
+        )
       ],
     );
   }
 
   Widget _smallDivider() {
     return const VerticalDivider(
-      color: Colors.brown,
-      thickness: 2,
+      color: Color.fromARGB(255, 51, 51, 51),
+      thickness: 1,
       width: 20,
       indent: 10,
       endIndent: 0,
@@ -79,11 +103,26 @@ class _StartScreenState extends State<StartScreen> {
   }
 
   Widget _hydratation() {
+    return Column(
+      children: [
+        const IntervalProgressBar(),
+        //_intervalBar(),
+        Text(
+          'Hidratación',
+          style: Theme.of(context).textTheme.bodySmall,
+        )
+      ],
+    );
+  }
+
+/*
+  Widget _intervalBar() {
     return Text(
       '1.0',
       style: Theme.of(context).textTheme.headlineSmall,
     );
   }
+*/
 
   Widget _buttonReg() {
     return Center(
